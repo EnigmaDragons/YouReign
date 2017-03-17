@@ -37,6 +37,7 @@ namespace YouReign.UIElements
 
         public void DisplayDialogue(string text)
         {
+            _isDisplayingOptions = false;
             _chatBox.ShowMessage(text);
         }
 

@@ -58,11 +58,11 @@ namespace YouReign.Scenes
         {
             if (_isSelecting)
             {
-                if (_currentOption.NextOptions.Count > 0 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 450 && Mouse.GetState().Y < 600)
+                if (_currentOption.NextOptions.Count > 0 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 375 && Mouse.GetState().Y < 525)
                     _selectedOptionIndex = 0;
-                if (_currentOption.NextOptions.Count > 1 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 610 && Mouse.GetState().Y < 760)
+                if (_currentOption.NextOptions.Count > 1 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 535 && Mouse.GetState().Y < 685)
                     _selectedOptionIndex = 1;
-                if (_currentOption.NextOptions.Count > 2 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 770 && Mouse.GetState().Y < 920)
+                if (_currentOption.NextOptions.Count > 2 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 695 && Mouse.GetState().Y < 845)
                     _selectedOptionIndex = 2;
             }
 
@@ -89,7 +89,11 @@ namespace YouReign.Scenes
 
             if (_isSelecting)
             {
+<<<<<<< HEAD
+                World.DrawRectangle(new Rectangle(300, 375 + _selectedOptionIndex * 160, 1000, 150), Color.FromNonPremultiplied(200, 00, 00, 100));  
+=======
                 World.DrawRectangle(new Rectangle(340, 400 + _selectedOptionIndex * 160, 890, 100), Color.FromNonPremultiplied(200, 50, 50, 80));  
+>>>>>>> 2437ea29c9a469a8f15f84b1ff8ec822b6b1ca54
             }
         }
 
@@ -97,7 +101,8 @@ namespace YouReign.Scenes
         {
             return new Option("Start", "throneroom", IntroMessages(), new List<Option>
             {
-                Option1()
+                Option1(),
+                Option3()
             });
         }
 
@@ -167,6 +172,42 @@ namespace YouReign.Scenes
                 new Message("You trip on the many vines"),
                 new Message("They proceed to pelt you with potato's until you die"),
                 new Message("Your kingdom falls to ruin as the cult of the rock spreads throughout your land")
+            };
+        }
+
+        private static Option Option3()
+        {
+            return new Option("Claim that this rock is a sign from the gods that you are to reign forever!", "throneroom", Option3Messages(), new List<Option>
+            {
+                Option31()
+            });
+        }
+
+        private static List<Message> Option3Messages()
+        {
+            return new List<Message>
+            {
+                new Message("You spread the news far and wide, I mean who who doesn't want to hear how great their king is!"),
+                new Message("The mail girl comes in all cheery like", "cheerfulmailwoman"),
+                new Message("\"Your three lords, Rajelikeeraleemotopricariousness, guile, and bob, upon hearing you will reign forever have eagerily gathered up many of their subjects and are coming here to celebrate your health\"")
+            };
+        }
+
+        private static Option Option31()
+        {
+            return new Option("Open the gates and meet them in the square!", "opensquare", Option31Messages());
+        }
+
+        private static List<Message> Option31Messages()
+        {
+            return new List<Message>
+            {
+                new Message("As you make it to the square the gates are opened and you watch them enter!"),
+                new Message("It's surprising how well armed all their subjects they brought with them are"),
+                new Message("If you didn't know better you might think they were going to war"),
+                new Message("They start to charge you as you realize they are in fact going to war"),
+                new Message("You don't make very far before your pierced with a lot of weapons"),
+                new Message("Guile manages to kill the other lords and rule ruthlessly in your stead")
             };
         }
     }

@@ -1,9 +1,5 @@
 ﻿using MonoDragons.Core.Engine;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MonoDragons.Core.PhysicsEngine;
 using MonoDragons.Core.UserInterface;
 using Microsoft.Xna.Framework;
@@ -40,7 +36,7 @@ namespace YouReign.NewFolder1
 
         public void Draw(Transform parentTransform)
         {
-            UI.DrawText(currentlyDisplayedMessage, parentTransform.Location, Color.Blue);
+            UI.DrawText(currentlyDisplayedMessage, parentTransform.Location, Color.DarkGray);
         }
     }
 }

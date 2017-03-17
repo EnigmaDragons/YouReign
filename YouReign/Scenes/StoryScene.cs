@@ -43,12 +43,7 @@ namespace YouReign.Scenes
             }
             else
             {
-                //TODO: fix this shit
-                _currentOption = _currentOption.NextOptions.First();
-                _theUi.SetBackground(_currentOption.Background);
-                _currentMessage = new Message(_currentOption.Message);
-                _theUi.DisplayDialogue(_currentMessage.Text);
-                _theUi.SetCharacter(_currentMessage.ImageName);
+                _theUi.DisplayOptions(_currentOption.NextOptions);
             }
         }
 

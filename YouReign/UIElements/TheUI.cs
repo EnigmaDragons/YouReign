@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using MonoDragons.Core.Engine;
 using MonoDragons.Core.PhysicsEngine;
 using MonoDragons.Core.UserInterface;
 using YouReign.NewFolder1;
 using MonoDragons.Core.UI;
+using YouReign.Story;
 
 namespace YouReign.UIElements
 {
@@ -17,11 +19,20 @@ namespace YouReign.UIElements
 
         private ChatBox _chatBox;
 
+        private bool _isDisplayingOptions;
+        private List<Option> _currentOptions;
+
         public TheUI(string backgroundName, string characterName)
         {
             _backgroundName = backgroundName;
             _charName = characterName;
             _chatBox = new ChatBox("", 850, DefaultFont.Font);
+        }
+
+        public void DisplayOptions(List<Option> options)
+        {
+            _isDisplayingOptions = true;
+            _currentOptions = options;
         }
 
         public void DisplayDialogue(string text)

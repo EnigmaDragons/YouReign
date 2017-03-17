@@ -11,7 +11,7 @@ namespace YouReign.Scenes
         public void Init()
         {
             Input.ClearBindings();
-            Input.On(Control.Start, () => World.NavigateToScene("ThroneRoom"));
+            Input.On(Control.Start, () => World.NavigateToScene("GameOver"));
         }
 
         public void Update(TimeSpan delta)
@@ -21,9 +21,9 @@ namespace YouReign.Scenes
         public void Draw()
         {
             UI.DrawCentered("Images/MainMenu/background", new Vector2(1600, 900));
-            World.DrawRectangle(new Rectangle(0, 0, 1600, 900), Color.FromNonPremultiplied(0, 0, 0, 50));
-            //UI.DrawCenteredWithOffset("Images/MainMenu/title", new Vector2(0, -140));
-            UI.DrawCenteredWithOffset("Images/MainMenu/pressenter", new Vector2(0, 400));
+            World.DrawRectangle(new Rectangle(0, 0, 1600, 900), Color.FromNonPremultiplied(0, 0, 0, 80));
+            UI.DrawCenteredWithOffset("Images/MainMenu/youreignlogo", new Vector2(0, -260));
+            UI.DrawCenteredWithOffset("Images/MainMenu/clicktostart", new Vector2(0, 400));
         }
     }
 }

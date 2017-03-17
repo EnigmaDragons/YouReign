@@ -1,12 +1,16 @@
 ﻿using MonoDragons.Core.Engine;
 using System;
+using System.Text;
 using MonoDragons.Core.PhysicsEngine;
+using MonoDragons.Core.UserInterface;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoDragons.Core.UI;
 using YouReign.UIElements;
 
 namespace YouReign.NewFolder1
 {
-    public class DialogueMessage : IVisualAutomaton
+    public class DialogueMessage : IAutomaton
     {
         private ChatBox _chat;
         private readonly string _imageName;

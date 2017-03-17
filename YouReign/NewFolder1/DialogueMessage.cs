@@ -1,68 +1,45 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MonoDragons.Core.Engine;
+﻿using MonoDragons.Core.Engine;
 using System;
 using System.Text;
 using MonoDragons.Core.PhysicsEngine;
 using MonoDragons.Core.UserInterface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoDragons.Core.UI;
 using YouReign.UIElements;
 
 namespace YouReign.NewFolder1
 {
     public class DialogueMessage : IAutomaton
     {
-        private readonly string _message;
+        private ChatBox _chat;
         private readonly string _imageName;
         private readonly string _soundEffectName;
+        private TheUI _TheUI;
 
         private bool _hasStarted = false;
 
-        public DialogueMessage(string message, string imageName = "none", string soundEffectName = "none")
+        public DialogueMessage(string message, TheUI theUI, string imageName = "none", string soundEffectName = "none")
         {
-            _message = message;
+            _TheUI = theUI;
+            _chat = new ChatBox(message, 850, DefaultFont.Font);
             _imageName = imageName;
             _soundEffectName = soundEffectName;
-
+            if (_imageName != "none")
+                _TheUI.SetCharacter(imageName);
         }
 
         public void Update(TimeSpan delta)
         {
-            if (!_hasStarted)
+            if (!_hasStarted && _soundEffectName != "none")
                 World.PlaySound(_soundEffectName);
             _hasStarted = true;
-
-
-            throw new NotImplementedException();
+            _chat.Update(delta);
         }
 
         public void Draw(Transform parentTransform)
         {
-            
-            UI.DrawCenteredWithOffset(_imageName, new Vector2(0, -125));
-        }
-
-        private string WrapText(SpriteFont spriteFont, string text)
-        {
-            var words = text.Split(' ');
-            var sb = new StringBuilder();
-            var lineWidth = 0f;
-            var spaceWidth = spriteFont.MeasureString(" ").X;
-            foreach (var word in words)
-            {
-                var size = spriteFont.MeasureString(word);
-                if (lineWidth + size.X < maxLineWidth)
-                {
-                    sb.Append(word + " ");
-                    lineWidth += size.X + spaceWidth;
-                }
-                else
-                {
-                    sb.Append("\n" + word + " ");
-                    lineWidth = size.X + spaceWidth;
-                }
-            }
-            return sb.ToString();
+            _chat.Draw(new Transform());
         }
     }
 }

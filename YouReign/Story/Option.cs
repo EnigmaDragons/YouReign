@@ -11,7 +11,7 @@ namespace YouReign.Story
 
         private int _index = 0;
 
-        public Option(string message, string background, List<Message> messages, List<Option> nextOptions = new List<Option>())
+        public Option(string message, string background, List<Message> messages, List<Option> nextOptions = null)
         {
             Message = message;
             Background = background;
@@ -33,7 +33,7 @@ namespace YouReign.Story
 
         public bool DidTheKingDie()
         {
-            return NextOptions.Count == 0;
+            return NextOptions == null;
         }
     }
 }

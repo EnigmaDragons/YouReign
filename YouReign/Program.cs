@@ -37,6 +37,7 @@ namespace YouReign
                 { "ThroneRoom", () => new FadingInScene(new ThroneRoomScene()) },
                 { "DarkGarden", () => new FadingInScene(new DarkGardenScene()) },
                 { "StoryScene", () => new FadingInScene(new StoryScene()) },
+                { "GameOver", () => new FadingInScene(new GameOverScene()) },
             });
         }
     }

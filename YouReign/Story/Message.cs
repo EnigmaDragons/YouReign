@@ -1,4 +1,8 @@
-﻿namespace YouReign.Story
+﻿using System.Text;
+using Microsoft.Xna.Framework.Graphics;
+using MonoDragons.Core.UI;
+
+namespace YouReign.Story
 {
     public class Message
     {

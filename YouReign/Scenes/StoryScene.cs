@@ -19,16 +19,24 @@ namespace YouReign.Scenes
 
         public void Init()
         {
+            _theUi = new TheUI("throneroom", "none");
             _currentOption = IntroOption();
+            _theUi.SetBackground(_currentOption.Background);
+            _currentMessage = new Message(_currentOption.Message);
+            _theUi.DisplayDialogue(_currentMessage.Text);
+            _theUi.SetCharacter(_currentMessage.ImageName);
             Input.ClearBindings();
             Input.On(Control.Start, AdvanceStory);
-            _theUi = new TheUI("throneroom", "none");
         }
 
         private void AdvanceStory()
         {
             if (_currentOption.ShouldGetNextMessage())
+            {
                 _currentMessage = _currentOption.GetNextMessage();
+                _theUi.DisplayDialogue(_currentMessage.Text);
+                _theUi.SetCharacter(_currentMessage.ImageName);
+            }
             else if (_currentOption.DidTheKingDie())
             {
                 World.NavigateToScene("GameOver");
@@ -37,12 +45,16 @@ namespace YouReign.Scenes
             {
                 //TODO: fix this shit
                 _currentOption = _currentOption.NextOptions.First();
+                _theUi.SetBackground(_currentOption.Background);
                 _currentMessage = new Message(_currentOption.Message);
+                _theUi.DisplayDialogue(_currentMessage.Text);
+                _theUi.SetCharacter(_currentMessage.ImageName);
             }
         }
 
         public void Update(TimeSpan delta)
         {
+            _theUi.Update(delta);
             if (_currentMessage.HasStarted)
                 return;
             World.PlaySound(_currentMessage.SoundEffectName);
@@ -52,9 +64,6 @@ namespace YouReign.Scenes
         public void Draw()
         {
             _theUi.Draw(new Transform());
-            _theUi.SetCharacter(_currentMessage.ImageName);
-            _theUi.SetBackground(_currentOption.Background);
-            _theUi.DisplayDialogue(_currentMessage.Text);
         }
 
         private static Option IntroOption()
@@ -81,7 +90,7 @@ namespace YouReign.Scenes
 
         private static Option Option1()
         {
-            return new Option("Claim there is treasure in the center of the rock, and anyone can claim it!", "glowingrock", Option1Messages(), new List<Option>
+            return new Option("Claim there is treasure in the center of the rock, and anyone can claim it!", "throneroom", Option1Messages(), new List<Option>
             {
                 Option11()
             });

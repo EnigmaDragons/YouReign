@@ -4,6 +4,7 @@ using MonoDragons.Core.Engine;
 using MonoDragons.Core.PhysicsEngine;
 using MonoDragons.Core.UserInterface;
 using YouReign.NewFolder1;
+using MonoDragons.Core.UI;
 
 namespace YouReign.UIElements
 {
@@ -19,7 +20,8 @@ namespace YouReign.UIElements
         public TheUI(string backgroundName, string characterName)
         {
             _backgroundName = backgroundName;
-            _chatBox = new ChatBox("");
+            _charName = characterName;
+            _chatBox = new ChatBox("", 850, DefaultFont.Font);
         }
 
         public void DisplayDialogue(string text)

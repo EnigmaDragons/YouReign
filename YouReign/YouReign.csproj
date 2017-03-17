@@ -85,6 +85,9 @@
     <Content Include="Content\Images\MainMenu\pressenter.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\MainMenu\youreignlogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\Text\youdiedtext.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

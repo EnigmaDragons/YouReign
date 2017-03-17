@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using MonoDragons.Core.Engine;
+using MonoDragons.Core.EventSystem;
 
 namespace MonoDragons.Core.Memory
 {
@@ -15,9 +16,9 @@ namespace MonoDragons.Core.Memory
             _sceneContents = new SceneContents(_game.Content);
         }
 
-        public static void Put(string resourceName, IDisposable resource)
+        public static void Put(string toString, IDisposable disposable)
         {
-            _sceneContents.Put(resourceName, resource);
+            _sceneContents.Put(disposable);
         }
 
         public static T Load<T>(string resourceName) where T : IDisposable

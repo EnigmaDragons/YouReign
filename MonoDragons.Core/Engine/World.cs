@@ -34,7 +34,6 @@ namespace MonoDragons.Core.Engine
 
         public static void Draw(Texture2D texture, Rectangle rectangle, Color color)
         {
-            Resources.Put(texture.GetHashCode().ToString(), texture);
             _spriteBatch.Draw(texture, rectangle, color);
         }
 
@@ -73,7 +72,6 @@ namespace MonoDragons.Core.Engine
         public static void DrawCircle(float radius, Color color, Vector2 position)
         {
             var circle = new CircleTexture((int) radius, color).Create();
-            Resources.Put(Guid.NewGuid().ToString(), circle);
             _spriteBatch.Draw(circle, position);
         }
 

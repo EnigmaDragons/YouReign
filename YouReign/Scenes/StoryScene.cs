@@ -64,6 +64,7 @@ namespace YouReign.Scenes
                     _selectedOptionIndex = 1;
                 if (_currentOption.NextOptions.Count > 2 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 695 && Mouse.GetState().Y < 845)
                     _selectedOptionIndex = 2;
+                _theUi.SetSelectedOptionIndex(_selectedOptionIndex);
             }
 
             if (_isSelecting && ifMouseIsClicked.Evaluate())
@@ -86,11 +87,6 @@ namespace YouReign.Scenes
         public void Draw()
         {
             _theUi.Draw(new Transform());
-
-            if (_isSelecting)
-            {
-                World.DrawRectangle(new Rectangle(340, 400 + _selectedOptionIndex * 160, 890, 100), Color.FromNonPremultiplied(200, 50, 50, 80));  
-            }
         }
 
         private static Option IntroOption()
@@ -185,7 +181,7 @@ namespace YouReign.Scenes
             {
                 new Message("You spread the news far and wide, I mean who who doesn't want to hear how great their king is!"),
                 new Message("The mail girl comes in all cheery like", "cheerfulmailwoman"),
-                new Message("\"Your three lords, Rajelikeeraleemotopricariousness, guile, and bob, upon hearing you will reign forever have eagerily gathered up many of their subjects and are coming here to celebrate your health\"")
+                new Message("\"Your three lords, Rajelikeeraleemotopricariousness, guile, and bob, upon hearing you will reign forever have eagerily gathered up many of their subjects and are coming here to celebrate your health\"", "cheerfulmailwoman")
             };
         }
 

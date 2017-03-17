@@ -94,5 +94,9 @@ namespace YouReign.UIElements
         {
             _chatBox.Update(delta);
         }
+
+        public void SetSelectedOptionIndex(int selectedOptionIndex)
+        {
+        }
     }
 }

@@ -21,12 +21,13 @@ namespace YouReign.UIElements
 
         private bool _isDisplayingOptions;
         private List<Option> _currentOptions;
+        private int _selectedOptionIndex = -1;
 
         public TheUI(string backgroundName, string characterName)
         {
             _backgroundName = backgroundName;
             _charName = characterName;
-            _chatBox = new ChatBox("", 850, DefaultFont.Font);
+            _chatBox = new ChatBox("", 795, DefaultFont.Font);
         }
 
         public void DisplayOptions(List<Option> options)
@@ -38,6 +39,7 @@ namespace YouReign.UIElements
         public void DisplayDialogue(string text)
         {
             _isDisplayingOptions = false;
+            _selectedOptionIndex = -1;
             _chatBox.ShowMessage(text);
         }
 
@@ -66,7 +68,8 @@ namespace YouReign.UIElements
             var x = 0;
             for (var y = 0; y < 480; y += 160)
             {
-                UI.DrawCenteredWithOffset("Images/UI/optionbox", new Vector2(0, y));
+                var img = x == _selectedOptionIndex ? "Images/UI/optionbox-hover" : "Images/UI/optionbox";
+                UI.DrawCenteredWithOffset(img, new Vector2(0, y));
                 UI.DrawText(_currentOptions[x].Message, new Vector2(400, 450 + y - 15), Color.DarkGray);
                 x++;
                 if (_currentOptions.Count == x)
@@ -97,6 +100,7 @@ namespace YouReign.UIElements
 
         public void SetSelectedOptionIndex(int selectedOptionIndex)
         {
+            _selectedOptionIndex = selectedOptionIndex;
         }
     }
 }

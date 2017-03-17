@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using MonoDragons.Core.Engine;
 using MonoDragons.Core.Inputs;
 using MonoDragons.Core.PhysicsEngine;
@@ -12,10 +14,14 @@ namespace YouReign.Scenes
 {
     public class StoryScene : IScene
     {
+        private readonly IfMouseIsClicked ifMouseIsClicked = new IfMouseIsClicked();
         private TheUI _theUi;
 
         private Option _currentOption;
         private Message _currentMessage;
+
+        private int _selectedOptionIndex = 0;
+        private bool _isSelecting = false;
 
         public void Init()
         {
@@ -43,12 +49,33 @@ namespace YouReign.Scenes
             }
             else
             {
+                _isSelecting = true;
                 _theUi.DisplayOptions(_currentOption.NextOptions);
             }
         }
 
         public void Update(TimeSpan delta)
         {
+            if (_isSelecting)
+            {
+                if (_currentOption.NextOptions.Count > 0 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 450 && Mouse.GetState().Y < 600)
+                    _selectedOptionIndex = 0;
+                if (_currentOption.NextOptions.Count > 1 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 610 && Mouse.GetState().Y < 760)
+                    _selectedOptionIndex = 1;
+                if (_currentOption.NextOptions.Count > 2 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 770 && Mouse.GetState().Y < 920)
+                    _selectedOptionIndex = 2;
+            }
+
+            if (_isSelecting && ifMouseIsClicked.Evaluate())
+            {
+                _isSelecting = false;
+                _currentOption = _currentOption.NextOptions[_selectedOptionIndex];
+                _currentMessage = _currentOption.GetNextMessage();
+                _theUi.SetBackground(_currentOption.Background);
+                _theUi.DisplayDialogue(_currentMessage.Text);
+                _theUi.SetCharacter(_currentMessage.ImageName);
+            }
+
             _theUi.Update(delta);
             if (_currentMessage.HasStarted)
                 return;
@@ -59,6 +86,11 @@ namespace YouReign.Scenes
         public void Draw()
         {
             _theUi.Draw(new Transform());
+
+            if (_isSelecting)
+            {
+                World.DrawRectangle(new Rectangle(300, 450 + _selectedOptionIndex * 160, 1000, 150), Color.FromNonPremultiplied(200, 50, 50, 80));  
+            }
         }
 
         private static Option IntroOption()

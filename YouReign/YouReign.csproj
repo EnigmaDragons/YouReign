@@ -68,6 +68,9 @@
     <Content Include="Content\Images\Backgrounds\glowingrock.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\Backgrounds\opensquare.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\Backgrounds\throneroom.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

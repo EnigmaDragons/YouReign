@@ -27,8 +27,8 @@ namespace MonoDragons.Core.Memory
 
         public static void Unload()
         {
-            _sceneContents.Dispose();
-            _sceneContents = new SceneContents(_game.Content);
+            //_sceneContents.Dispose();
+            //_sceneContents = new SceneContents(_game.Content);
         }
     }
 }

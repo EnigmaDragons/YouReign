@@ -16,6 +16,7 @@ namespace YouReign.Scenes
 
         public void Update(TimeSpan delta)
         {
+            _theUi.SetCharacter("Tim");
         }
 
         public void Draw()

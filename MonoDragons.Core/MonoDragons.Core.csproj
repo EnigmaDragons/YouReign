@@ -50,7 +50,9 @@
     <Compile Include="Common\SubscriptionAction.cs" />
     <Compile Include="EngimaDragons\LogoScene.cs" />
     <Compile Include="Engine\Hack.cs" />
+    <Compile Include="Engine\INavigation.cs" />
     <Compile Include="Engine\IVisualAutomaton.cs" />
+    <Compile Include="Engine\ScreenSize.cs" />
     <Compile Include="Navigation\INavigation.cs" />
     <Compile Include="Engine\IScene.cs" />
     <Compile Include="Engine\IAutomaton.cs" />

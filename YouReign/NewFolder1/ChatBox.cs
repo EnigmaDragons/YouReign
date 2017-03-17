@@ -12,7 +12,7 @@ namespace YouReign.NewFolder1
 {
     public class ChatBox : IVisualAutomaton
     {
-        private double MillisToCharacter = 30;
+        private double MillisToCharacter = 35;
         private string currentlyDisplayedMessage;
         private string messageToDisplay;
         private long totalMessageTime;

@@ -83,6 +83,8 @@ namespace MonoDragons.Core.Inputs
 
         public void ClearBindings()
         {
+            _observers1.Clear();
+            _observers2.Clear();
         }
     }
 }

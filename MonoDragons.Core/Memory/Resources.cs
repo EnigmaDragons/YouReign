@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using MonoDragons.Core.Engine;
 using MonoDragons.Core.EventSystem;
+using MonoDragons.Core.UI;
 
 namespace MonoDragons.Core.Memory
 {
@@ -30,6 +31,7 @@ namespace MonoDragons.Core.Memory
         {
             _sceneContents.Dispose();
             _sceneContents = new SceneContents(_game.Content);
+            DefaultFont.Load(_game.Content);
         }
     }
 }

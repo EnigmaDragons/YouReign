@@ -89,11 +89,7 @@ namespace YouReign.Scenes
 
             if (_isSelecting)
             {
-<<<<<<< HEAD
-                World.DrawRectangle(new Rectangle(300, 375 + _selectedOptionIndex * 160, 1000, 150), Color.FromNonPremultiplied(200, 00, 00, 100));  
-=======
                 World.DrawRectangle(new Rectangle(340, 400 + _selectedOptionIndex * 160, 890, 100), Color.FromNonPremultiplied(200, 50, 50, 80));  
->>>>>>> 2437ea29c9a469a8f15f84b1ff8ec822b6b1ca54
             }
         }
 

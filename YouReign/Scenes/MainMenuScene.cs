@@ -11,7 +11,7 @@ namespace YouReign.Scenes
         public void Init()
         {
             Input.ClearBindings();
-            Input.On(Control.Start, () => World.NavigateToScene("GameOver"));
+            Input.On(Control.Start, () => World.NavigateToScene("StoryScene"));
         }
 
         public void Update(TimeSpan delta)

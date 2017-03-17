@@ -1,10 +1,8 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MonoDragons.Core.Engine;
+﻿using MonoDragons.Core.Engine;
 using System;
 using MonoDragons.Core.PhysicsEngine;
-using MonoDragons.Core.UserInterface;
-using Microsoft.Xna.Framework;
 using MonoDragons.Core.UI;
+using YouReign.UIElements;
 
 namespace YouReign.NewFolder1
 {
@@ -13,15 +11,18 @@ namespace YouReign.NewFolder1
         private ChatBox _chat;
         private readonly string _imageName;
         private readonly string _soundEffectName;
+        private TheUI _TheUI;
 
         private bool _hasStarted = false;
 
-        public DialogueMessage(string message, string imageName = "none", string soundEffectName = "none")
+        public DialogueMessage(string message, TheUI theUI, string imageName = "none", string soundEffectName = "none")
         {
+            _TheUI = theUI;
             _chat = new ChatBox(message, 850, DefaultFont.Font);
             _imageName = imageName;
             _soundEffectName = soundEffectName;
-            
+            if (_imageName != "none")
+                _TheUI.SetCharacter(imageName);
         }
 
         public void Update(TimeSpan delta)
@@ -34,9 +35,7 @@ namespace YouReign.NewFolder1
 
         public void Draw(Transform parentTransform)
         {
-            _chat.Draw(new Transform(new Vector2(360,690), Rotation.Default, 1));
-            if (_imageName != "none")
-                UI.DrawCenteredWithOffset(_imageName, new Vector2(0, -125));
+            _chat.Draw(new Transform());
         }
     }
 }

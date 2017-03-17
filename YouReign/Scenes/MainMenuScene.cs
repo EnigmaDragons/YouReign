@@ -22,7 +22,7 @@ namespace YouReign.Scenes
         {
             UI.DrawCentered("Images/MainMenu/background", new Vector2(1600, 900));
             World.DrawRectangle(new Rectangle(0, 0, 1600, 900), Color.FromNonPremultiplied(0, 0, 0, 80));
-            UI.DrawCenteredWithOffset("Images/MainMenu/youreignlogo", new Vector2(0, -220));
+            UI.DrawCenteredWithOffset("Images/MainMenu/youreignlogo", new Vector2(0, -260));
             UI.DrawCenteredWithOffset("Images/MainMenu/clicktostart", new Vector2(0, 400));
         }
     }

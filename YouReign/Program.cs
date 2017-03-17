@@ -15,7 +15,7 @@ namespace YouReign
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame("TimTest", new ScreenSettings(1600, 900, false), CreateSceneFactory(), CreateKeyboardController()))
+            using (var game = new MainGame("ThroneRoom", new ScreenSettings(1600, 900, false), CreateSceneFactory(), CreateKeyboardController()))
                 game.Run();
         }
 
@@ -34,6 +34,7 @@ namespace YouReign
                 { "Logo", () => new FadingInScene(new LogoScene()) },
                 { "MainMenu", () => new FadingInScene(new MainMenuScene()) },
                 { "TimTest", () => new TimTestScene() },
+                { "ThroneRoom", () => new FadingInScene(new ThroneRoomScene()) },
             });
         }
     }

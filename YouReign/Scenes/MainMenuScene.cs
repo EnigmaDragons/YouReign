@@ -11,7 +11,7 @@ namespace YouReign.Scenes
         public void Init()
         {
             Input.ClearBindings();
-            Input.On(Control.Start, () => World.NavigateToScene("Logo"));
+            Input.On(Control.Start, () => World.NavigateToScene("ThroneRoom"));
         }
 
         public void Update(TimeSpan delta)

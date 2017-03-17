@@ -42,10 +42,14 @@
     <Compile Include="NewFolder1\DialogueMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\DarkGardenScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
+    <Compile Include="Scenes\StoryScene.cs" />
     <Compile Include="Scenes\TimTestScene.cs" />
     <Compile Include="Scenes\ThroneRoomScene.cs" />
-    <Compile Include="Story\Dialogue.cs" />
+    <Compile Include="Story\Message.cs" />
+    <Compile Include="Story\Option.cs" />
+    <Compile Include="UIElements\TheUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -55,6 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Backgrounds\darkgarden.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\Backgrounds\throneroom.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

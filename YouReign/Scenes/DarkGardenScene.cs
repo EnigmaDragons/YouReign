@@ -5,13 +5,13 @@ using YouReign.UIElements;
 
 namespace YouReign.Scenes
 {
-    public sealed class ThroneRoomScene : IScene
+    public sealed class DarkGardenScene : IScene
     {
         private TheUI _theUi;
 
         public void Init()
         {
-            _theUi = new TheUI("throneroom", "panickedadvisor");
+            _theUi = new TheUI("darkgarden", "panickedadvisor");
         }
 
         public void Update(TimeSpan delta)

@@ -1,13 +1,16 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using MonoDragons.Core.Engine;
 using System;
+using System.Text;
 using MonoDragons.Core.PhysicsEngine;
 using MonoDragons.Core.UserInterface;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using YouReign.UIElements;
 
 namespace YouReign.NewFolder1
 {
-    public class DialogueMessage : IVisualAutomaton
+    public class DialogueMessage : IAutomaton
     {
         private readonly string _message;
         private readonly string _imageName;
@@ -20,6 +23,7 @@ namespace YouReign.NewFolder1
             _message = message;
             _imageName = imageName;
             _soundEffectName = soundEffectName;
+
         }
 
         public void Update(TimeSpan delta)
@@ -34,7 +38,31 @@ namespace YouReign.NewFolder1
 
         public void Draw(Transform parentTransform)
         {
+            
             UI.DrawCenteredWithOffset(_imageName, new Vector2(0, -125));
+        }
+
+        private string WrapText(SpriteFont spriteFont, string text)
+        {
+            var words = text.Split(' ');
+            var sb = new StringBuilder();
+            var lineWidth = 0f;
+            var spaceWidth = spriteFont.MeasureString(" ").X;
+            foreach (var word in words)
+            {
+                var size = spriteFont.MeasureString(word);
+                if (lineWidth + size.X < maxLineWidth)
+                {
+                    sb.Append(word + " ");
+                    lineWidth += size.X + spaceWidth;
+                }
+                else
+                {
+                    sb.Append("\n" + word + " ");
+                    lineWidth = size.X + spaceWidth;
+                }
+            }
+            return sb.ToString();
         }
     }
 }

@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="NewFolder1\CauseOfDeath.cs" />
     <Compile Include="NewFolder1\ChatBox.cs" />
     <Compile Include="NewFolder1\DialogueMessage.cs" />
     <Compile Include="Program.cs" />

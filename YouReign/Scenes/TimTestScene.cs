@@ -2,6 +2,7 @@
 using MonoDragons.Core.Engine;
 using MonoDragons.Core.Inputs;
 using MonoDragons.Core.PhysicsEngine;
+using MonoDragons.Core.UI;
 using MonoDragons.Core.UserInterface;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace YouReign.Scenes
         public void Init()
         {
             Input.ClearBindings();
-            x = new ChatBox("This is a test scene. Lot more text in this line and I am trying to see how fast this draws.");
+            x = new ChatBox("This is a test scene. Lot more text in this line and I am trying to see how fast this draws.",
+                900, DefaultFont.Font);
         }
 
         public void Update(TimeSpan delta)

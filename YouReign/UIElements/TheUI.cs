@@ -14,10 +14,10 @@ namespace YouReign.UIElements
     {
         private readonly Vector2 _charPosition = new Vector2(-300, 28);
 
-        private string _backgroundName = "throneroom";
-        private string _charName = "none";
+        private string _backgroundName;
+        private string _charName;
 
-        private ChatBox _chatBox;
+        private readonly ChatBox _chatBox;
 
         private bool _isDisplayingOptions;
         private List<Option> _currentOptions;
@@ -53,11 +53,38 @@ namespace YouReign.UIElements
         public void Draw(Transform parentTransform)
         {
             UI.DrawCentered($"Images/Backgrounds/{_backgroundName}", new Vector2(1600, 900));
-            if (_charName != "none")
+            DrawCharacter();
+            DrawDialogue();
+            DrawOptions();
+        }
+
+        private void DrawOptions()
+        {
+            if (!_isDisplayingOptions) return;
+
+            var x = 0;
+            for (var y = 0; y < 480; y += 160)
             {
-                UI.DrawCenteredWithOffset("Images/UI/portraitbackground", new Vector2(240, 320), _charPosition);
-                UI.DrawCenteredWithOffset($"Images/Characters/{_charName}", new Vector2(175, 240), _charPosition);
+                UI.DrawCenteredWithOffset("Images/UI/optionbox", new Vector2(0, y));
+                UI.DrawText(_currentOptions[x].Message, new Vector2(400, 450 + y - 15), Color.DarkGray);
+                x++;
+                if (_currentOptions.Count == x)
+                    return;
             }
+        }
+
+        private void DrawCharacter()
+        {
+            if (_charName == "none" || _isDisplayingOptions) return;
+
+            UI.DrawCenteredWithOffset("Images/UI/portraitbackground", new Vector2(240, 320), _charPosition);
+            UI.DrawCenteredWithOffset($"Images/Characters/{_charName}", new Vector2(175, 240), _charPosition);
+        }
+
+        private void DrawDialogue()
+        {
+            if (_isDisplayingOptions) return;
+
             UI.DrawCenteredWithOffset("Images/UI/dialoguebox", new Vector2(0, 310));
             _chatBox.Draw(new Transform(new Vector2(400, 700)));
         }

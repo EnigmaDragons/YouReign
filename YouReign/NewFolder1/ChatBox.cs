@@ -42,7 +42,7 @@ namespace YouReign.NewFolder1
 
         public void Draw(Transform parentTransform)
         {
-            UI.DrawText(currentlyDisplayedMessage, parentTransform.Location, Color.White);
+            UI.DrawText(currentlyDisplayedMessage, parentTransform.Location, Color.DarkGray);
         }
 
         private string WrapText(string text)

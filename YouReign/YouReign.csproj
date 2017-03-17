@@ -45,6 +45,7 @@
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Scenes\TimTestScene.cs" />
     <Compile Include="Scenes\ThroneRoomScene.cs" />
+    <Compile Include="Story\Dialogue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

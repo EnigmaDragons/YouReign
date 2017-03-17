@@ -11,7 +11,7 @@ namespace YouReign.Scenes
         public void Init()
         {
             Input.ClearBindings();
-            Input.On(Control.Start, () => World.NavigateToScene("CyberRoom1"));
+            Input.On(Control.Start, () => World.NavigateToScene("Logo"));
         }
 
         public void Update(TimeSpan delta)
@@ -20,10 +20,10 @@ namespace YouReign.Scenes
 
         public void Draw()
         {
-            UI.DrawCentered("Images/MainMenu/background", new Vector2(1200, 800));
-            World.DrawRectangle(new Rectangle(0, 0, 1200, 960), Color.FromNonPremultiplied(0, 0, 0, 225));
-            UI.DrawCenteredWithOffset("Images/MainMenu/title", new Vector2(0, -140));
-            UI.DrawCenteredWithOffset("Images/MainMenu/pressenter", new Vector2(0, 200));
+            UI.DrawCentered("Images/MainMenu/background", new Vector2(1600, 900));
+            World.DrawRectangle(new Rectangle(0, 0, 1600, 900), Color.FromNonPremultiplied(0, 0, 0, 50));
+            //UI.DrawCenteredWithOffset("Images/MainMenu/title", new Vector2(0, -140));
+            UI.DrawCenteredWithOffset("Images/MainMenu/pressenter", new Vector2(0, 400));
         }
     }
 }

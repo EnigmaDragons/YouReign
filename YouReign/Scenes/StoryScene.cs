@@ -33,6 +33,20 @@ namespace YouReign.Scenes
             _theUi.SetCharacter(_currentMessage.ImageName);
             Input.ClearBindings();
             Input.On(Control.Start, AdvanceStory);
+            Input.On(Control.Select, SkipToDecision);
+        }
+
+        private void SkipToDecision()
+        {
+            if (_currentOption.DidTheKingDie())
+            {
+                World.NavigateToScene("GameOver");
+            }
+            else
+            {
+                _isSelecting = true;
+                _theUi.DisplayOptions(_currentOption.NextOptions);
+            }
         }
 
         private void AdvanceStory()
@@ -104,7 +118,7 @@ namespace YouReign.Scenes
 
         private static Option IntroOption()
         {
-            return new Option("Start", "throneroom", IntroMessages(), new List<Option>
+            return new Option("Start, press S to skip to next decision point.", "throneroom", IntroMessages(), new List<Option>
             {
                 Option1(),
                 Option2(),

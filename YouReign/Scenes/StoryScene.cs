@@ -154,7 +154,7 @@ namespace YouReign.Scenes
 
         private static Option Backstabbed()
         {
-            return new Option("You took too long, candies gone, that's what happens!", "throneroom"/*TODO*/, BackstabbedMessages());
+            return new Option("You took too long! Your candy's gone! That's what happens!", "backstabbed", BackstabbedMessages());
         }
 
         private static List<Message> BackstabbedMessages()

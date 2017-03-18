@@ -149,12 +149,13 @@ namespace YouReign.Scenes
             };
         }
 
-        #region Opt1
+        #region Opt1-1
         private static Option Option11()
         {
             return new Option("Kill them all, They are infected!", "throneroom", Option11Messages(), new List<Option>
             {
-                Option111()
+                Option111(),
+                Option112()
             });
         }
 
@@ -168,7 +169,7 @@ namespace YouReign.Scenes
             };
         }
 
-        #region Opt1
+        #region Opt1-1-1
         private static Option Option111()
         {
             return new Option("Burst forth from your castle shouting \"1v1 me scrubs!\" as you charge them with your sword drawn!", "darkgarden", Option111Messages());
@@ -185,9 +186,27 @@ namespace YouReign.Scenes
             };
         }
         #endregion
+
+        #region Opt1-1-2
+        private static Option Option112()
+        {
+            return new Option("Leave this castle and set the self destruct sequence to blow up this whole town, that'll stop em!", "castleexplosion", Option112Messages(), new List<Option>
+            {
+                
+            });
+        }
+
+        private static List<Message> Option112Messages()
+        {
+            return new List<Message>
+            {
+               new Message("Like every badass action hero you don't even look behind you at the explosions.", "none", "none"/*TODO: castle explosion*/),
+            };
+        }
+        #endregion 
         #endregion
 
-        #region Opt3
+        #region Opt1-3
         public static Option Option13()
         {
             return new Option("This is a joyous occasion, my people have never danced like this before. We shall celebrate this with a feast!", "throneroom"/*TODO*/, Option13Messages(), new List<Option>

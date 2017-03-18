@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace YouReign.NewFolder1
 {
-    class IfMouseIsClicked
+    class MouseIsClicked
     {
         private MouseState prevState;
 

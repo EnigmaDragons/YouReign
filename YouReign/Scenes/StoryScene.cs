@@ -14,7 +14,7 @@ namespace YouReign.Scenes
 {
     public class StoryScene : IScene
     {
-        private readonly IfMouseIsClicked ifMouseIsClicked = new IfMouseIsClicked();
+        private readonly IfMouseIsClicked MouseIsClicked = new IfMouseIsClicked();
         private TheUI _theUi;
 
         private Option _currentOption;
@@ -37,7 +37,11 @@ namespace YouReign.Scenes
 
         private void AdvanceStory()
         {
-            if (_currentOption.ShouldGetNextMessage())
+            if (!_theUi.IsMessageCompletelyDisplayed())
+            {
+                _theUi.CompletelyDisplayMessage();
+            }
+            else if (_currentOption.ShouldGetNextMessage())
             {
                 _currentMessage = _currentOption.GetNextMessage();
                 _theUi.DisplayDialogue(_currentMessage.Text);
@@ -67,14 +71,21 @@ namespace YouReign.Scenes
                 _theUi.SetSelectedOptionIndex(_selectedOptionIndex);
             }
 
-            if (_isSelecting && ifMouseIsClicked.Evaluate())
+            if (MouseIsClicked.Evaluate())
             {
-                _isSelecting = false;
-                _currentOption = _currentOption.NextOptions[_selectedOptionIndex];
-                _currentMessage = _currentOption.GetNextMessage();
-                _theUi.SetBackground(_currentOption.Background);
-                _theUi.DisplayDialogue(_currentMessage.Text);
-                _theUi.SetCharacter(_currentMessage.ImageName);
+                if (_isSelecting)
+                {
+                    _isSelecting = false;
+                    _currentOption = _currentOption.NextOptions[_selectedOptionIndex];
+                    _currentMessage = _currentOption.GetNextMessage();
+                    _theUi.SetBackground(_currentOption.Background);
+                    _theUi.DisplayDialogue(_currentMessage.Text);
+                    _theUi.SetCharacter(_currentMessage.ImageName);
+                }
+                else
+                {
+                    AdvanceStory();
+                }
             }
 
             _theUi.Update(delta);

@@ -30,8 +30,13 @@ namespace YouReign.UIElements
             _chatBox = new ChatBox("", 795, DefaultFont.Font);
         }
 
+        public bool IsMessageCompletelyDisplayed() => _chatBox.IsMessageCompletelyDisplayed();
+
+        public void CompletelyDisplayMessage() => _chatBox.CompletelyDisplayMessage();
+
         public void DisplayOptions(List<Option> options)
         {
+            _chatBox.ShowMessage("");
             _isDisplayingOptions = true;
             _currentOptions = options;
         }

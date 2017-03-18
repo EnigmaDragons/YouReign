@@ -25,11 +25,22 @@ namespace YouReign.NewFolder1
             messageToDisplay = WrapText(message);
         }
 
+        public bool IsMessageCompletelyDisplayed()
+        {
+            return currentlyDisplayedMessage.Length == messageToDisplay.Length;
+        }
+
         public void ShowMessage(string message)
         {
             currentlyDisplayedMessage = "";
             messageToDisplay = WrapText(message);
             totalMessageTime = 0;
+        }
+
+        public void CompletelyDisplayMessage()
+        {
+            currentlyDisplayedMessage = messageToDisplay;
+            totalMessageTime = (int)(MillisToCharacter * messageToDisplay.Length);
         }
 
         public void Update(TimeSpan deltaMillis)

@@ -81,6 +81,8 @@ namespace YouReign.Scenes
                     _theUi.SetBackground(_currentOption.Background);
                     _theUi.DisplayDialogue(_currentMessage.Text);
                     _theUi.SetCharacter(_currentMessage.ImageName);
+                    _selectedOptionIndex = 0;
+                    _theUi.SetSelectedOptionIndex(_selectedOptionIndex);
                 }
                 else
                 {

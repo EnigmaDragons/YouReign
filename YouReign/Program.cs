@@ -24,6 +24,7 @@ namespace YouReign
             return new KeyboardController(new Map<Keys, Control>
             {
                 { Keys.Enter, Control.Start },
+                { Keys.S, Control.Select }
             });
         }
 

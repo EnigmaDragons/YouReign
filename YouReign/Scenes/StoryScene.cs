@@ -21,6 +21,7 @@ namespace YouReign.Scenes
         private Message _currentMessage;
 
         private int _selectedOptionIndex = 0;
+        private long _millisSpentSelecting = 0;
         private bool _isSelecting = false;
 
         public void Init()
@@ -33,6 +34,20 @@ namespace YouReign.Scenes
             _theUi.SetCharacter(_currentMessage.ImageName);
             Input.ClearBindings();
             Input.On(Control.Start, AdvanceStory);
+            Input.On(Control.Select, SkipToDecision);
+        }
+
+        private void SkipToDecision()
+        {
+            if (_currentOption.DidTheKingDie())
+            {
+                World.NavigateToScene("GameOver");
+            }
+            else
+            {
+                _isSelecting = true;
+                _theUi.DisplayOptions(_currentOption.NextOptions);
+            }
         }
 
         private void AdvanceStory()
@@ -69,6 +84,16 @@ namespace YouReign.Scenes
                 if (_currentOption.NextOptions.Count > 2 && Mouse.GetState().X > 300 && Mouse.GetState().X < 1300 && Mouse.GetState().Y > 695 && Mouse.GetState().Y < 845)
                     _selectedOptionIndex = 2;
                 _theUi.SetSelectedOptionIndex(_selectedOptionIndex);
+                _millisSpentSelecting += delta.Milliseconds;
+                if (_millisSpentSelecting >= 60000)
+                {
+                    _isSelecting = false;
+                    _currentOption = Backstabbed();
+                    _currentMessage = new Message(_currentOption.Message);
+                    _theUi.SetBackground(_currentOption.Background);
+                    _theUi.DisplayDialogue(_currentMessage.Text);
+                    _theUi.SetCharacter(_currentMessage.ImageName);
+                }
             }
 
             if (MouseIsClicked.Evaluate())
@@ -83,6 +108,7 @@ namespace YouReign.Scenes
                     _theUi.SetCharacter(_currentMessage.ImageName);
                     _selectedOptionIndex = 0;
                     _theUi.SetSelectedOptionIndex(_selectedOptionIndex);
+                    _millisSpentSelecting = 0;
                 }
                 else
                 {
@@ -104,7 +130,7 @@ namespace YouReign.Scenes
 
         private static Option IntroOption()
         {
-            return new Option("Start", "throneroom", IntroMessages(), new List<Option>
+            return new Option("Start, press S to skip to next decision point.", "throneroom", IntroMessages(), new List<Option>
             {
                 Option1(),
                 Option2(),
@@ -123,6 +149,18 @@ namespace YouReign.Scenes
                 new Message("Your advisor hurries in looking extremely panicked.", "panickedadvisor", "meteorcrash"),
                 new Message("\"Sire a glowing rock from the sky has fallen right in the kingdom's garden!\"", "panickedadvisor"),
                 new Message("\"And it's in the shape of an apple with a bite out of it\"", "panickedadvisor")
+            };
+        }
+
+        private static Option Backstabbed()
+        {
+            return new Option("You took too long, candies gone, that's what happens!", "throneroom"/*TODO*/, BackstabbedMessages());
+        }
+
+        private static List<Message> BackstabbedMessages()
+        {
+            return new List<Message>
+            {
             };
         }
 

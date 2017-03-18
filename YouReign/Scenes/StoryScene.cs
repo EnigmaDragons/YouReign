@@ -14,7 +14,7 @@ namespace YouReign.Scenes
 {
     public class StoryScene : IScene
     {
-        private readonly IfMouseIsClicked MouseIsClicked = new IfMouseIsClicked();
+        private readonly MouseIsClicked MouseIsClicked = new MouseIsClicked();
         private TheUI _theUi;
 
         private Option _currentOption;

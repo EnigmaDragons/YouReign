@@ -3,11 +3,14 @@ using Microsoft.Xna.Framework;
 using MonoDragons.Core.Engine;
 using MonoDragons.Core.Inputs;
 using MonoDragons.Core.UserInterface;
+using YouReign.NewFolder1;
 
 namespace YouReign.Scenes
 {
     public class GameOverScene : IScene
     {
+        private readonly MouseIsClicked MouseIsClicked = new MouseIsClicked();
+
         public void Init()
         {
             Input.ClearBindings();
@@ -16,6 +19,8 @@ namespace YouReign.Scenes
 
         public void Update(TimeSpan delta)
         {
+            if (MouseIsClicked.Evaluate())
+                World.NavigateToScene("MainMenu");
         }
 
         public void Draw()
